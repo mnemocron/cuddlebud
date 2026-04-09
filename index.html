@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #ffffff;
+  --surface:    #fff8f5;
+  --accent1:    #ffb4a2;
+  --card:       #b5838d;
+  --cardShadow: #e5989b;
+  --text:       #6d6875;
+  --headerBg:   #ffb4a2;
+  --headerTx:   #6d6875;
+  --wildcard:   #c10016;
+  --transition: 0.4s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ─── HEADER ─── */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--headerBg);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  transition: background var(--transition);
+}
+
+.header-title {
+  /* font-family: 'Cormorant Garamond', serif; */
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--headerTx);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.hamburger-btn {
+  position: absolute;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 7px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.hamburger-btn:hover { background: rgba(0,0,0,0.07); }
+.hamburger-btn span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1), opacity 0.2s;
+}
+.hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-dropdown {
+  position: fixed;
+  top: 58px;
+  right: 0;
+  width: min(260px, 90vw);
+  background: var(--surface);
+  border-left: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-radius: 0 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 8px 28px rgba(0,0,0,0.1);
+  z-index: 200;
+  transform: translateX(110%);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1), background var(--transition);
+  overflow: hidden;
+}
+.nav-dropdown.open { transform: translateX(0); }
+
+.nav-section-label {
+  font-size: 0.61rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.42;
+  padding: 0.85rem 1.1rem 0.3rem;
+  transition: color var(--transition);
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 0.65rem 1.1rem;
+  font-size: 1.0rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.12s;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.nav-dropdown a:last-child { border-bottom: none; }
+.nav-dropdown a:hover { background: var(--accent1); }
+.nav-dropdown a.nav-active { font-weight: 500; }
+
+.nav-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.09);
+  margin: 0.2rem 0;
+}
+
+/* ─── MAIN ─── */
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 2rem;
+  gap: 2rem;
+}
+
+.decks-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.deck-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.deck-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.65;
+  transition: color var(--transition);
+}
+
+/* Stack depth */
+.stack-wrap {
+  position: relative;
+  width: 164px;
+  height: 110px;
+}
+.stack-wrap::before,
+.stack-wrap::after {
+  content: '';
+  position: absolute;
+  border-radius: 11px;
+  background: var(--cardShadow);
+  transition: background var(--transition);
+}
+.stack-wrap::before {
+  width: 100%; height: 100%;
+  top: 6px; left: 5px;
+  opacity: 0.7;
+}
+.stack-wrap::after {
+  width: 100%; height: 100%;
+  top: 11px; left: 10px;
+  opacity: 0.35;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 164px;
+  height: 110px;
+  border-radius: 11px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  flex-shrink: 0;
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.025);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+}
+.card:active { transform: scale(0.96); }
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  background: var(--card);
+  border-radius: 11px;
+  border: 1.5px solid rgba(255,255,255,0.22);
+  transition: background var(--transition);
+}
+.card-back svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border-radius: 11px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  text-align: center;
+
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  line-height: 1.55;
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+
+.card-face--wildcard {
+  background: var(--wildcard);
+  border-color: rgba(255,255,255,0.3);
+  color: var(--surface);
+}
+
+.card-face--wildcard .wildcard-badge {
+  position: absolute;
+  top: 7px;
+  right: 9px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+
+.card-slot {
+  width: 164px;
+  height: 110px;
+  border-radius: 11px;
+  border: 1.5px dashed rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.empty-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.3;
+}
+
+.count-badge {
+  font-size: 0.63rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  opacity: 0.45;
+}
+
+.discard-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.discard-divider {
+  width: 240px;
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+  margin-bottom: 0.4rem;
+}
+.discard-stack {
+  position: relative;
+  width: 164px;
+  height: 110px;
+}
+
+@keyframes flipIn {
+  from { transform: rotateY(90deg) scale(0.88); opacity: 0; }
+  to   { transform: rotateY(0deg)  scale(1);    opacity: 1; }
+}
+.flipping { animation: flipIn 0.38s cubic-bezier(.2,.8,.3,1) forwards; }
+
+/* ─── FOOTER ─── */
+
+footer {
+  background: var(--headerBg);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  transition: background var(--transition);
+}
+
+.footer-links { display: flex; gap: 1.5rem; }
+
+.footer-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.71rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.22);
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+.footer-btn:hover { opacity: 0.55; }
+
+.footer-copy {
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  opacity: 0.38;
+}
+
+/* ─── MODALS ─── */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.28);
+  z-index: 400;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 440px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem 1.8rem 1.6rem;
+  position: relative;
+  transition: background var(--transition);
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.92) translateY(12px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);    opacity: 1; }
+}
+.modal-overlay.open .modal {
+  animation: modalIn 0.24s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+.modal-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.modal-close {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  opacity: 0.4;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 5px;
+  transition: opacity 0.15s, background 0.15s;
+}
+.modal-close:hover { opacity: 0.8; background: rgba(0,0,0,0.06); }
+
+.modal-body {
+  font-size: 0.84rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.modal-body p { margin-bottom: 0.7rem; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body strong { font-weight: 500; }
+.modal-body code {
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(0,0,0,0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <span class="header-title" id="header-title">Card Game</span>
+  <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-dropdown" id="nav-dropdown" aria-label="Site navigation">
+    <div class="nav-section-label">Navigate</div>
+    <a href="index.html" class="nav-home">&#8962;&ensp;Home</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Games</div>
+    <div id="nav-games-list"></div>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main>
+  <div class="decks-row" id="decks-row"></div>
+  <div class="discard-section">
+    <div class="discard-divider"></div>
+    <!--<div class="deck-label">Drawn card</div>-->
+    <div id="discard-area" class="card-slot">
+      <span class="empty-label">none yet</span>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <button class="footer-btn" id="rules-btn">Rules</button>
+    <button class="footer-btn" id="about-btn">About</button>
+  </div>
+  <span class="footer-copy">&copy; <span id="copy-year"></span> Card Game</span>
+</footer>
+
+<!-- RULES MODAL -->
+<div class="modal-overlay" id="rules-modal" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="rules-modal-title">How to play</span>
+      <button class="modal-close" data-close="rules-modal">&#x2715;</button>
+    </div>
+    <div class="modal-body" id="rules-body">
+      <p>Loading rules…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="about-modal-title">About</span>
+      <button class="modal-close" data-close="about-modal">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <p>Card Game is a simple, flexible platform for prompt-based conversation games. Each game is defined entirely in <code>games.json</code> — swap the contents to create a completely different experience.</p>
+      <p>Designed to bring people together around meaningful questions, playful prompts, or creative challenges. No points, no winners — just good conversation.</p>
+      <p><strong>How it works:</strong> each player takes turns clicking a deck to reveal a prompt card. Read it aloud, answer honestly, and listen to everyone else's response before moving on.</p>
+      <p>To add your own game, open <code>games.json</code> and add a new entry with a unique <code>gamename</code>, a title, a colour theme, and three decks of prompts. Then link to it with <code>?q=yourgamename</code>.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Utilities ── */
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getParam(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+
+/* ── Theme ── */
+function applyTheme(theme) {
+  const root = document.documentElement;
+  const map = {
+    '--bg':         theme.background,
+    '--surface':    theme.surface,
+    '--accent1':    theme.accent1,
+    '--card':       theme.card,
+    '--cardShadow': theme.cardShadow,
+    '--text':       theme.text,
+    '--headerBg':   theme.headerBg,
+    '--headerTx':   theme.headerTx || theme.text,
+    '--wildcard':   theme.wildcard,
+  };
+  for (const [k, v] of Object.entries(map)) root.style.setProperty(k, v);
+}
+
+/* ── Card back SVG (organic soft shapes) ── */
+function makeBackSVG() {
+  return `<svg viewBox="0 0 164 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <rect width="164" height="110" rx="11" fill="transparent"/>
+    <ellipse cx="38" cy="33" rx="40" ry="30" fill="rgba(255,255,255,0.06)" transform="rotate(-22 38 33)"/>
+    <ellipse cx="132" cy="82" rx="44" ry="27" fill="rgba(255,255,255,0.07)" transform="rotate(18 132 82)"/>
+    <ellipse cx="82" cy="12" rx="60" ry="18" fill="rgba(255,255,255,0.04)" transform="rotate(0 82 12)"/>
+    <rect x="9" y="9" width="146" height="92" rx="8" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+    <path d="M 16 38 Q 41 24 66 38 Q 91 52 116 38 Q 141 24 154 38" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="0.9"/>
+    <path d="M 16 55 Q 41 41 66 55 Q 91 69 116 55 Q 141 41 154 55" fill="none" stroke="rgba(255,255,255,0.11)" stroke-width="0.9"/>
+    <path d="M 16 72 Q 41 58 66 72 Q 91 86 116 72 Q 141 58 154 72" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="0.9"/>
+    <ellipse cx="82" cy="55" rx="20" ry="13" fill="rgba(255,255,255,0.07)"/>
+    <ellipse cx="82" cy="55" rx="20" ry="13" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+    <ellipse cx="82" cy="55" rx="11" ry="7" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="22" cy="21" r="2.5" fill="rgba(255,255,255,0.22)"/>
+    <circle cx="142" cy="21" r="2.5" fill="rgba(255,255,255,0.22)"/>
+    <circle cx="22" cy="89" r="2.5" fill="rgba(255,255,255,0.22)"/>
+    <circle cx="142" cy="89" r="2.5" fill="rgba(255,255,255,0.22)"/>
+  </svg>`;
+}
+
+/* ── Game state ── */
+const state = {};
+
+function buildCardBack(deckId) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.setAttribute('aria-label', `Draw from ${state[deckId].label}`);
+  card.innerHTML = `<div class="card-back">${makeBackSVG()}</div>`;
+  card.addEventListener('click', () => drawCard(deckId));
+  return card;
+}
+
+function buildFaceCard(prompt) {
+  const text = typeof prompt === 'string' ? prompt : prompt.text;
+  const isWild = typeof prompt === 'object' && prompt.wildcard === true;
+  const card = document.createElement('div');
+  card.className = 'card flipping';
+  const faceClass = isWild ? 'card-face card-face--wildcard' : 'card-face';
+  card.innerHTML = `<div class="${faceClass}">${isWild ? '<span class="wildcard-badge">&#9733; Wildcard</span>' : ''}${text}</div>`;
+  return card;
+}
+
+function renderDeck(deckId) {
+  const wrapper = document.getElementById(`deck-${deckId}`);
+  if (!wrapper) return;
+  const rem = state[deckId].remaining;
+  const badge = wrapper.querySelector('.count-badge');
+
+  if (rem.length === 0) {
+    const slot = wrapper.querySelector('.stack-wrap, .card-slot');
+    const empty = document.createElement('div');
+    empty.className = 'card-slot';
+    empty.innerHTML = `<span class="empty-label">empty</span>`;
+    slot.replaceWith(empty);
+    if (badge) badge.textContent = '0 cards';
+    return;
+  }
+
+  let wrap = wrapper.querySelector('.stack-wrap');
+  if (!wrap) {
+    wrap = document.createElement('div');
+    wrap.className = 'stack-wrap';
+    const oldSlot = wrapper.querySelector('.card-slot');
+    if (oldSlot) oldSlot.replaceWith(wrap);
+  }
+  wrap.innerHTML = '';
+  wrap.appendChild(buildCardBack(deckId));
+  if (badge) badge.textContent = `${rem.length} card${rem.length !== 1 ? 's' : ''}`;
+}
+
+function drawCard(deckId) {
+  const deck = state[deckId];
+  if (!deck || deck.remaining.length === 0) return;
+  const prompt = deck.remaining.pop();
+
+  const area = document.getElementById('discard-area');
+  area.className = 'discard-stack';
+  area.innerHTML = '';
+  area.appendChild(buildFaceCard(prompt));
+  renderDeck(deckId);
+}
+
+/* ── Build page from game data ── */
+function buildGame(game) {
+  applyTheme(game.theme);
+
+  document.getElementById('header-title').textContent = game.title;
+  document.title = game.title;
+
+  const rulesBody = document.getElementById('rules-body');
+  rulesBody.innerHTML = '';
+  const p = document.createElement('p');
+  p.textContent = game.rules;
+  rulesBody.appendChild(p);
+
+  const row = document.getElementById('decks-row');
+  row.innerHTML = '';
+
+  game.decks.forEach((deck, i) => {
+    const id = `d${i}`;
+    const prompts = deck.prompts.map(p => typeof p === 'string' ? { text: p } : p);
+    state[id] = { label: deck.label, remaining: shuffle(prompts) };
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'deck-wrapper';
+    wrapper.id = `deck-${id}`;
+
+    const lbl = document.createElement('div');
+    lbl.className = 'deck-label';
+    lbl.textContent = deck.label;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'stack-wrap';
+    wrap.appendChild(buildCardBack(id));
+
+    const badge = document.createElement('div');
+    badge.className = 'count-badge';
+    badge.textContent = `${prompts.length} cards`;
+
+    wrapper.appendChild(lbl);
+    wrapper.appendChild(wrap);
+    wrapper.appendChild(badge);
+    row.appendChild(wrapper);
+  });
+
+  const area = document.getElementById('discard-area');
+  area.className = 'card-slot';
+  area.innerHTML = '<span class="empty-label">none yet</span>';
+}
+
+/* ── Nav: populate games list ── */
+function buildNavGames(games, activeGamename) {
+  const list = document.getElementById('nav-games-list');
+  list.innerHTML = '';
+  games.forEach(g => {
+    const a = document.createElement('a');
+    a.href = `index.html?q=${encodeURIComponent(g.gamename)}`;
+    a.textContent = g.title;
+    if (g.gamename === activeGamename) a.classList.add('nav-active');
+    list.appendChild(a);
+  });
+}
+
+/* ── Hamburger ── */
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navDropdown  = document.getElementById('nav-dropdown');
+
+hamburgerBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = navDropdown.classList.toggle('open');
+  hamburgerBtn.classList.toggle('open', open);
+  hamburgerBtn.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('click', () => {
+  navDropdown.classList.remove('open');
+  hamburgerBtn.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+});
+navDropdown.addEventListener('click', e => e.stopPropagation());
+
+/* ── Modals ── */
+function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+document.getElementById('rules-btn').addEventListener('click', () => openModal('rules-modal'));
+document.getElementById('about-btn').addEventListener('click', () => openModal('about-modal'));
+
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', () => closeModal(btn.dataset.close));
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape')
+    document.querySelectorAll('.modal-overlay.open').forEach(o => closeModal(o.id));
+});
+
+/* ── Footer year ── */
+document.getElementById('copy-year').textContent = new Date().getFullYear();
+
+/* ── Init ── */
+async function init() {
+  let allGames;
+  try {
+    const res = await fetch('games.json');
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    allGames = data.games;
+  } catch(e) {
+    allGames = fallbackGames();
+  }
+  if (!allGames || !allGames.length) return;
+
+  const qParam = getParam('q');
+  const game = allGames.find(g => g.gamename === qParam) || allGames[0];
+
+  buildNavGames(allGames, game.gamename);
+  buildGame(game);
+}
+
+function fallbackGames() {
+  return [{
+    gamename: 'warmth', title: 'Warmth & Wonder',
+    theme: { background:'#ffcdb2', surface:'#fff8f5', accent1:'#ffb4a2', card:'#b5838d', cardShadow:'#e5989b', wildcard:'#b5838d', text:'#6d6875', headerBg:'#ffb4a2' },
+    rules: 'Take turns drawing a card from any deck. Read the prompt aloud and share your answer. No right or wrong answers — just connection. Wildcard cards are special prompts for the whole group!',
+    decks: [
+      { label: 'Memories',  prompts: [{ text: 'Share a childhood memory that still makes you smile.' }, { text: 'Describe a place you\'d love to revisit.' }, { text: 'Everyone shares their earliest memory.', wildcard: true }] },
+      { label: 'Dreams',    prompts: [{ text: 'What would you do if you couldn\'t fail?' }, { text: 'Describe your perfect day.' }, { text: 'If you could live anywhere, where?' }] },
+      { label: 'Right Now', prompts: [{ text: 'Share a small joy from this week.' }, { text: 'Everyone shares what they\'re grateful for today.', wildcard: true }, { text: 'What\'s on your mind right now?' }] }
+    ]
+  }];
+}
+
+init();
+</script>
+</body>
+</html>

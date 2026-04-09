@@ -1,0 +1,231 @@
+{
+  "games": [
+    {
+      "gamename": "cuddlebud",
+      "title": "Cuddle Buddies",
+      "theme": {
+        "background":  "#ffcdb2",
+        "surface":     "#fff8f5",
+        "accent1":     "#ffb4a2",
+        "card":        "#b5838d",
+        "cardShadow":  "#e5989b",
+        "text":        "#6d6875",
+        "headerBg":    "#ffb4a2",
+        "wildcard":    "#e5989b"
+      },
+      "rules": "Take turns drawing a card from any of the three decks. Use the prompt as inspiration for a cuddly moment. Consent is important. Only proceed with an action if everyone agrees to do so.",
+      "decks": [
+        {
+          "label": "The Friendzone",
+          "prompts": [
+            "Sit back-to-back and relax together for 1 minute",
+            "Link arms while walking across the room",
+            "Rest your head briefly on their shoulder",
+            "Give each other a high-five that turns into holding hands for 5 seconds",
+            "Sit side-by-side with your legs touching",
+            "Lean your knees against each other while sitting",
+            "Give a 10-second one-armed side hug",
+            "Stand shoulder-to-shoulder and sway gently for 20 seconds",
+            "Gently tap or trace shapes on their hand — they guess what it is",
+            "Sit cross-legged facing each other, knees touching",
+            "Share a blanket over both your laps",
+            "Rest your hand lightly on their forearm during a conversation",
+            "Mirror each other’s posture and maintain eye contact for 30 seconds",
+            "Give a slow, deliberate handshake that lingers",
+            "Sit close enough that your hips touch and stay there for a minute",
+            "Place your hand on top of theirs and breathe together for 5 breaths",
+            "Lightly bump shoulders and stay leaned in",
+            "Let your feet touch under the table for 1 minute",
+            "Gently guide them by the elbow across the room",
+            "Do a “trust lean” where you gently lean into each other while standing"
+          ]
+        },
+        {
+          "label": "Cuddle Buds",
+          "prompts": [
+            "Sit with one person leaning fully into the other’s chest",
+            "Side hug that turns into a full 20-second hug",
+            "Sit between their legs while both are upright",
+            "Rest your head in their lap for 1 minute",
+            "Wrap up together in a blanket cocoon",
+            "Sit facing each other with legs intertwined",
+            "One person gently strokes the other’s arm for 30 seconds",
+            "Lay side-by-side with your heads touching",
+            "Give each other a slow, full hug without talking",
+            "Sit on the couch with one person’s legs draped over the other",
+            "Lean your head against theirs and stay still",
+            "Sit behind them and gently hold their shoulders",
+            "“Half spoon” while sitting (one person slightly behind, arms around)",
+            "Hold each other in a quiet embrace for 1 minute",
+            "One person plays with the other’s hair",
+            "Lay with your legs tangled together",
+            "Sit chest-to-chest and match breathing",
+            "One person rests their hand on the other’s back",
+            "Sit on the floor with one person leaning fully into the other’s torso",
+            "Try a full spooning position for 1–2 minutes"
+          ]
+        },
+        {
+          "label": "Borderline Foreplay",
+          "prompts": [
+            "Sit straddling their lap (clothed) and maintain eye contact",
+            "Slow, close full-body hug with hips aligned",
+            "Sit between their legs and gently lean back into them",
+            "Rock gently together while sitting close",
+            "Lay partially on top of each other (torso-to-torso)",
+            "Wrap legs around each other while sitting",
+            "Sit facing each other, legs intertwined, bodies close",
+            "Slow grinding motion while both fully clothed (keep it subtle and playful)",
+            "Lay with one leg draped fully over their hips",
+            "Sit on their lap and lean chest-to-chest",
+            "Full-body spooning with tighter contact",
+            "Press foreheads together while bodies stay fully connected",
+            "Gentle hip-to-hip movement while hugging",
+            "Lay between their legs while facing them",
+            "Sit straddling one thigh and lean forward",
+            "Hold each other tightly while slowly shifting weight together",
+            "Sit close enough that your entire bodies are touching and move together slightly",
+            "One person pulls the other closer by the waist and holds",
+            "Slow, playful “almost grinding” with exaggerated pauses",
+            "Stay in a close straddle position and synchronize breathing and movement"
+          ]
+        }
+      ]
+    },
+    {
+      "gamename": "WNRS",
+      "title": "WNRS",
+      "theme": {
+        "background":  "#ffffff",
+        "surface":     "#f0f0f0",
+        "accent1":     "#b8d4db",
+        "card":        "#c10016",
+        "cardShadow":  "#7faab5",
+        "text":        "#000000",
+        "headerBg":    "#c10016",
+        "headerTx":    "#ffffff",
+        "wildcard":    "#c10016"
+      },
+      "rules": "Each player draws one card per round, choosing freely from any of the three decks. Reflect quietly for a moment before answering — depth is rewarded over speed. Others may ask one follow-up question after each answer. When a Wildcard is drawn, the question is posed to the entire group simultaneously. Each person writes their answer before anyone speaks — then all answers are revealed at once.",
+      "decks": [
+        {
+          "label": "Level 1 Perception",
+          "prompts": [
+            { "text": "What do you value above all else in life?" },
+            { "text": "Describe a time you acted against your own values — what happened?" },
+            { "text": "What belief have you held longest, and has it ever wavered?" },
+            { "text": "Everyone writes down one thing they would never compromise on — then reveals.", "wildcard": true },
+            { "text": "Name something you would never compromise on." },
+            { "text": "How do you want to be remembered?" }
+          ]
+        },
+        {
+          "label": "Level 2 Connection",
+          "prompts": [
+            { "text": "What fear has held you back the most?" },
+            { "text": "Describe a challenge that changed you fundamentally." },
+            { "text": "What's a mistake you've learned the most from?" },
+            { "text": "When do you find it hardest to be honest?" },
+            { "text": "Everyone shares one thing they find hardest to accept about themselves.", "wildcard": true },
+            { "text": "What would your younger self be surprised to know about you now?" }
+          ]
+        },
+        {
+          "label": "Level 3 Reflection",
+          "prompts": [
+            { "text": "Who has influenced you the most, and how?" },
+            { "text": "Describe a moment of unexpected kindness you experienced." },
+            { "text": "What makes you feel truly seen by another person?" },
+            { "text": "Everyone completes this sentence: 'I feel most connected when…'", "wildcard": true },
+            { "text": "What's something you wish you'd said to someone?" },
+            { "text": "What does home mean to you?" }
+          ]
+        }
+      ]
+    },
+    {
+      "gamename": "matze",
+      "title": "Gestern Heute Morgen",
+      "theme": {
+        "background":  "#ffffff",
+        "surface":     "#f0f0f0",
+        "accent1":     "#b8d4db",
+        "card":        "#fbe122",
+        "cardShadow":  "#7faab5",
+        "text":        "#000000",
+        "headerBg":    "#fbe122",
+        "headerTx":    "#000000",
+        "wildcard":    "#fbe122"
+      },
+      "rules": "Each player draws one card per round, choosing freely from any of the three decks. Reflect quietly for a moment before answering — depth is rewarded over speed. Others may ask one follow-up question after each answer. When a Wildcard is drawn, the question is posed to the entire group simultaneously. Each person writes their answer before anyone speaks — then all answers are revealed at once.",
+      "decks": [
+        {
+          "label": "Gestern",
+          "prompts": [
+            { "text": "Mit welchem Satz würde deine Biografie beginnen?" }
+          ]
+        },
+        {
+          "label": "Heute",
+          "prompts": [
+            { "text": "Mit welchem Satz würde deine Biografie beginnen?" }
+          ]
+        },
+        {
+          "label": "Morgen",
+          "prompts": [
+            { "text": "Mit welchem Satz würde deine Biografie beginnen?" }
+          ]
+        }
+      ]
+    },
+    {
+      "gamename": "test",
+      "title": "test",
+      "theme": {
+        "background":  "#ff0000",
+        "surface":     "#00ff00",
+        "accent1":     "#0000ff",
+        "card":        "#ffff00",
+        "cardShadow":  "#ff00ff",
+        "text":        "#000000",
+        "headerBg":    "#333333",
+        "wildcard":    "#dbdbdb"
+      },
+      "explainer": {
+        "background":  "main background",
+        "surface":     "card face & menu background or wildcard text",
+        "accent1":     "dropdown hover?",
+        "card":        "backside of card",
+        "cardShadow":  "shadow edge of card",
+        "text":        "text",
+        "headerBg":    "header & footer background",
+        "wildcard":    "wildcard face"
+      },
+      "rules": "Lorus ipsemd i dimen yebet kablooie.",
+      "decks": [
+        {
+          "label": "Values",
+          "prompts": [
+            { "text": "bingo bongo" },
+            { "text": "blongo tschongo.", "wildcard": true }
+          ]
+        },
+        {
+          "label": "Shadows",
+          "prompts": [
+            { "text": "bingo bongo" },
+            { "text": "blongo tschongo.", "wildcard": true }
+          ]
+        },
+        {
+          "label": "Connection",
+          "prompts": [
+            { "text": "bingo bongo" },
+            { "text": "blongo tschongo.", "wildcard": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
