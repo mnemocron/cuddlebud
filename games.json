@@ -4,14 +4,15 @@
       "gamename": "cuddlebud",
       "title": "Cuddle Buddies",
       "theme": {
-        "background":  "#ffcdb2",
-        "surface":     "#fff8f5",
-        "accent1":     "#ffb4a2",
-        "card":        "#b5838d",
-        "cardShadow":  "#e5989b",
-        "text":        "#6d6875",
-        "headerBg":    "#ffb4a2",
-        "wildcard":    "#e5989b"
+        "background":  "#f5ebe0",
+        "surface":     "#e3d5ca",
+        "accent1":     "#c9ada7",
+        "card":        "#4a4e69",
+        "cardShadow":  "#9a8c98",
+        "text":        "#22223b",
+        "headerBg":    "#4a4e69",
+        "headerTx":    "#f2e9e4",
+        "wildcard":    "#4a4e69"
       },
       "rules": "Take turns drawing a card from any of the three decks. Use the prompt as inspiration for a cuddly moment. Consent is important. Only proceed with an action if everyone agrees to do so.",
       "decks": [
@@ -804,54 +805,6 @@
           "label": "Morgen",
           "prompts": [
             { "text": "Mit welchem Satz würde deine Biografie beginnen?" }
-          ]
-        }
-      ]
-    },
-    {
-      "gamename": "test",
-      "title": "test",
-      "theme": {
-        "background":  "#ff0000",
-        "surface":     "#00ff00",
-        "accent1":     "#0000ff",
-        "card":        "#ffff00",
-        "cardShadow":  "#ff00ff",
-        "text":        "#000000",
-        "headerBg":    "#333333",
-        "wildcard":    "#dbdbdb"
-      },
-      "explainer": {
-        "background":  "main background",
-        "surface":     "card face & menu background or wildcard text",
-        "accent1":     "dropdown hover?",
-        "card":        "backside of card",
-        "cardShadow":  "shadow edge of card",
-        "text":        "text",
-        "headerBg":    "header & footer background",
-        "wildcard":    "wildcard face"
-      },
-      "rules": "Lorus ipsemd i dimen yebet kablooie.",
-      "decks": [
-        {
-          "label": "Values",
-          "prompts": [
-            { "text": "bingo bongo" },
-            { "text": "blongo tschongo.", "wildcard": true }
-          ]
-        },
-        {
-          "label": "Shadows",
-          "prompts": [
-            { "text": "bingo bongo" },
-            { "text": "blongo tschongo.", "wildcard": true }
-          ]
-        },
-        {
-          "label": "Connection",
-          "prompts": [
-            { "text": "bingo bongo" },
-            { "text": "blongo tschongo.", "wildcard": true }
           ]
         }
       ]
