@@ -297,18 +297,37 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: clamp(0.3rem, 0.8vh, 0.6rem);
+  width: 100%;
 }
 .discard-divider {
-  width: 240px;
+  width: min(55%, 220px);
   height: 1px;
   background: rgba(0,0,0,0.1);
-  margin-bottom: 0.4rem;
+  margin-bottom: clamp(0.1rem, 0.5vh, 0.4rem);
 }
+
+/* Discard card — wider to show the full prompt comfortably */
+.discard-section .stack-wrap,
+.discard-section .card-slot,
+.discard-section .discard-stack {
+  width: min(52%, 240px);
+  aspect-ratio: 3 / 2;
+}
+
 .discard-stack {
   position: relative;
-  width: 164px;
-  height: 110px;
+}
+
+.discard-stack .card {
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(6px, 1.5vw, 11px);
+}
+
+/* Larger font on the discard (drawn) card */
+.discard-stack .card-face {
+  font-size: clamp(0.78rem, 2.5vw, 1.15rem);
 }
 
 @keyframes flipIn {
