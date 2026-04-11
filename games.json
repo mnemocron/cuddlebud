@@ -375,21 +375,21 @@
             { "text": "Do you believe everyone has a calling? If so, do you think I've found mine?"},
             { "text": "What do you recommend I let go of, if anything?"},
             { "text": "In one word, describe how you feel right now"},
-            { "text": "Wild Card Give your partner a hug. Not the crappy kind. A ward fluffy one.", "wildcard": true },
-            { "text": "Wild Card Write down one thing you want to let go of this year. Read out loud, then rip up together. (Both players)", "wildcard": true },
-            { "text": "Wild Card Swap a song suggestion your partner may enjoy. (Both players)", "wildcard": true },
-            { "text": "Wild Card Dare your partner to do something outside of their comfort zone in the next week. (Both players)", "wildcard": true },
-            { "text": "Wild Card Admit something.", "wildcard": true },
-            { "text": "Wild Card Give your partner a compliment you don't think they hear enough.", "wildcard": true },
-            { "text": "Wild Card Write a song about your partner. (30 seconds) Then sing it aloud, get into it! (Both players)", "wildcard": true },
-            { "text": "Wild Card Scroll through each other's Instagrams. Find the picture you feel best represents your partner's essence and comment on why.", "wildcard": true },
-            { "text": "Wild Card Both players share something you're most grateful for in this current moment.", "wildcard": true },
-            { "text": "Wild Card Play a round of rock, paper, scissors. Winner can ask their partner anything. Loser must answer.", "wildcard": true },
-            { "text": "Wild Card Give each other nicknames!", "wildcard": true },
-            { "text": "Wild Card Create your own question. Make it count.", "wildcard": true },
-            { "text": "Wild Card Take a selfie together.", "wildcard": true },
-            { "text": "Wild Card Write down a goal for this year. Fold & exchange. Hold each other accountable. (Both players)", "wildcard": true },
-            { "text": "Wild Card Both players write a note to your younger selves. (1 minute) Option to compare.", "wildcard": true }
+            { "text": "Give your partner a hug. Not the crappy kind. A ward fluffy one.", "wildcard": true },
+            { "text": "Write down one thing you want to let go of this year. Read out loud, then rip up together. (Both players)", "wildcard": true },
+            { "text": "Swap a song suggestion your partner may enjoy. (Both players)", "wildcard": true },
+            { "text": "Dare your partner to do something outside of their comfort zone in the next week. (Both players)", "wildcard": true },
+            { "text": "Admit something.", "wildcard": true },
+            { "text": "Give your partner a compliment you don't think they hear enough.", "wildcard": true },
+            { "text": "Write a song about your partner. (30 seconds) Then sing it aloud, get into it! (Both players)", "wildcard": true },
+            { "text": "Scroll through each other's Instagrams. Find the picture you feel best represents your partner's essence and comment on why.", "wildcard": true },
+            { "text": "Both players share something you're most grateful for in this current moment.", "wildcard": true },
+            { "text": "Play a round of rock, paper, scissors. Winner can ask their partner anything. Loser must answer.", "wildcard": true },
+            { "text": "Give each other nicknames!", "wildcard": true },
+            { "text": "Create your own question. Make it count.", "wildcard": true },
+            { "text": "Take a selfie together.", "wildcard": true },
+            { "text": "Write down a goal for this year. Fold & exchange. Hold each other accountable. (Both players)", "wildcard": true },
+            { "text": "Both players write a note to your younger selves. (1 minute) Option to compare.", "wildcard": true }
           ]
         }
       ]
@@ -648,15 +648,15 @@
             { "text": "What did your friends\n think about me when we\n first started dating?"},
             { "text": "How important do you think\n gifts are to me? Explain."},
             { "text": "What do you think I'd like to\n do more often with you?"},
-            { "text": "Wild Card Between the two of us,\n who's most likely to make\n us late for an event? Write\n it down and compare.", "wildcard":true},
-            { "text": "Wild Card Maintain eye contact\n for 30 seconds. What\n did you notice?", "wildcard":true},
-            { "text": "Wild Card Draw your partner to\n the best of your ability.\n 1 minute. Compare.", "wildcard":true},
-            { "text": "Wild Card Do your best\n impersonation of\n each other.", "wildcard":true},
-            { "text": "Wild Card Rate each other's cuddling\n skills on a scale of 1-10.\n Compare and explain.", "wildcard":true},
-            { "text": "Wild Card Rate each other's cooking\n skills on a scale of 1-10.\n Compare and explain.", "wildcard":true},
-            { "text": "Wild Card Write down how well\n you feel you know your\n partner on a scale of 1-10.\n Compare and explain.", "wildcard":true},
-            { "text": "Wild Card Write down how well you\n feel your partner knows\n you on a scale of 1-10.\n Compare and explain.", "wildcard":true},
-            { "text": "Wild Card Write down how many times\n a week you think your partner\n would like to have sex.\n Compare.", "wildcard":true}
+            { "text": "Between the two of us,\n who's most likely to make\n us late for an event? Write\n it down and compare.", "wildcard":true},
+            { "text": "Maintain eye contact\n for 30 seconds. What\n did you notice?", "wildcard":true},
+            { "text": "Draw your partner to\n the best of your ability.\n 1 minute. Compare.", "wildcard":true},
+            { "text": "Do your best\n impersonation of\n each other.", "wildcard":true},
+            { "text": "Rate each other's cuddling\n skills on a scale of 1-10.\n Compare and explain.", "wildcard":true},
+            { "text": "Rate each other's cooking\n skills on a scale of 1-10.\n Compare and explain.", "wildcard":true},
+            { "text": "Write down how well\n you feel you know your\n partner on a scale of 1-10.\n Compare and explain.", "wildcard":true},
+            { "text": "Write down how well you\n feel your partner knows\n you on a scale of 1-10.\n Compare and explain.", "wildcard":true},
+            { "text": "Write down how many times\n a week you think your partner\n would like to have sex.\n Compare.", "wildcard":true}
           ]
         },
         {
@@ -707,14 +707,14 @@
             { "text": "What's one way our\n relationship has gotten\n better over time?"},
             { "text": "In what way(s) is this\n relationship unlike any\n other before?"},
             { "text": "What title would you give\n this chapter of our sex life?"},
-            { "text":  "Wild Card Write down 3 things you love\n most about your partner.\n 1 minute. Compare.", "wildcard":true},
-            { "text":  "Wild Card Finish the sentence:\n I'm sorry for _________.\n Write it down. Both\n players. Compare.", "wildcard":true},
-            { "text":  "Wild Card Write down one small way you\n can be better in this relationship.\n Both players. Compare.", "wildcard":true},
-            { "text":  "Wild Card On a scale of 1-10, write down\n the importance of having kids\n to you. Compare and explain.", "wildcard":true},
-            { "text":  "Wild Card Write a love song for\n your partner. 1 minute.\n Perform for each other.", "wildcard":true},
-            { "text":  "Wild Card Write a short guide on how\n to love your partner well.\n 30 seconds. Compare.", "wildcard":true},
-            { "text":  "Wild Card Draw one of your favorite\n memories from our relationship.\n 30 seconds. Compare.", "wildcard":true},
-            { "text":  "Wild Card Between the two of us\n who apologizes first after\n a fight? Write down their\n name. Compare answers.", "wildcard":true}
+            { "text":  "Write down 3 things you love\n most about your partner.\n 1 minute. Compare.", "wildcard":true},
+            { "text":  "Finish the sentence:\n I'm sorry for _________.\n Write it down. Both\n players. Compare.", "wildcard":true},
+            { "text":  "Write down one small way you\n can be better in this relationship.\n Both players. Compare.", "wildcard":true},
+            { "text":  "On a scale of 1-10, write down\n the importance of having kids\n to you. Compare and explain.", "wildcard":true},
+            { "text":  "Write a love song for\n your partner. 1 minute.\n Perform for each other.", "wildcard":true},
+            { "text":  "Write a short guide on how\n to love your partner well.\n 30 seconds. Compare.", "wildcard":true},
+            { "text":  "Draw one of your favorite\n memories from our relationship.\n 30 seconds. Compare.", "wildcard":true},
+            { "text":  "Between the two of us\n who apologizes first after\n a fight? Write down their\n name. Compare answers.", "wildcard":true}
           ]
         },
         {
@@ -760,15 +760,15 @@
             { "text": "In your opinion,\n how am I holding myself\n back the most?"},
             { "text": "If we started a business\n together what would it be?"},
             { "text": "What's your favorite\n ritual of ours? What's a\n ritual you'd like to create\n for us moving forward?"},
-            { "text": "Wild Card Write a note to your\n partner that you can\n only open during\n your next fight.", "wildcard":true},
-            { "text": "Wild Card Write down a promise to each\n other. 1 minute. Compare.", "wildcard":true},
-            { "text": "Wild Card Write down the top 3 things\n you're most grateful for in\n your partner. 30 seconds.\n Compare.", "wildcard":true},
-            { "text": "Wild Card Kiss a part of your partner\n you've never kissed before.", "wildcard":true},
-            { "text": "Wild Card What memory of ours makes\n you smile just thinking about it?\n Write it down and compare.", "wildcard":true},
-            { "text": "Wild Card Think of one thing we can\n do this week to make our\n relationship stronger.\n Schedule it now.", "wildcard":true},
-            { "text": "Wild Card Write a stand up routine about\n our relationship. 1 minute.\n Recite to each other.", "wildcard":true},
-            { "text": "Wild Card Plan a surprise your partner\n would appreciate. Make it happen\n by the end of this month.\n Both players.", "wildcard":true},
-            { "text": "Wild Card Play a round of\n rock paper scissors.\n Loser must do anything\n their partner wants.", "wildcard":true}
+            { "text": "Write a note to your\n partner that you can\n only open during\n your next fight.", "wildcard":true},
+            { "text": "Write down a promise to each\n other. 1 minute. Compare.", "wildcard":true},
+            { "text": "Write down the top 3 things\n you're most grateful for in\n your partner. 30 seconds.\n Compare.", "wildcard":true},
+            { "text": "Kiss a part of your partner\n you've never kissed before.", "wildcard":true},
+            { "text": "What memory of ours makes\n you smile just thinking about it?\n Write it down and compare.", "wildcard":true},
+            { "text": "Think of one thing we can\n do this week to make our\n relationship stronger.\n Schedule it now.", "wildcard":true},
+            { "text": "Write a stand up routine about\n our relationship. 1 minute.\n Recite to each other.", "wildcard":true},
+            { "text": "Plan a surprise your partner\n would appreciate. Make it happen\n by the end of this month.\n Both players.", "wildcard":true},
+            { "text": "Play a round of\n rock paper scissors.\n Loser must do anything\n their partner wants.", "wildcard":true}
           ]
         }
       ]
