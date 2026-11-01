@@ -1062,7 +1062,37 @@
           ]
         }
       ]
+    },
+    {
+      "gamename": "neurospice",
+      "title": "Neurospice",
+      "theme": {
+        "background":  "#ffffff",
+        "surface":     "#f0f0f0",
+        "accent1":     "#b8d4db",
+        "card":        "#187885",
+        "cardShadow":  "#7faab5",
+        "text":        "#ffffff",
+        "headerBg":    "#187885",
+        "headerTx":    "#ffffff",
+        "wildcard":    "#187885"
+      },
+      "rules": "Each player draws one card per round, choosing freely from any of the three decks. Reflect quietly for a moment before answering — depth is rewarded over speed. Others may ask one follow-up question after each answer. When a Wildcard is drawn, the question is posed to the entire group simultaneously. Each person writes their answer before anyone speaks — then all answers are revealed at once.",
+      "decks": [
+        {
+          "label": "Questions",
+          "prompts": [
+            { "text": "What was the cringe phase in your teens like?" },
+            { "text": "What is a piece of media that is important to you?" },
+            { "text": "Which piece of media changed your life?" },
+            { "text": "What name would you give your spaceship?" },
+            { "text": "Do you know how anxiety feels like?" },
+            { "text": "Do you have a social battery?" }
+          ]
+        }
+      ]
     }
+
     
   ]
 }
